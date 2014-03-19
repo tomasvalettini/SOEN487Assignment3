@@ -66,5 +66,21 @@
         <%-- end web service invocation --%><hr/>
 
         <h1>Receive Payment</h1>
+        <%-- start web service invocation --%><hr/>
+        <%
+        try {
+            org.me.manufacturer.ManufacturerWS_Service service = new org.me.manufacturer.ManufacturerWS_Service();
+            org.me.manufacturer.ManufacturerWS port = service.getManufacturerWSPort();
+             // TODO initialize WS operation arguments here
+            int orderNumber = 111;
+            float totalPrice = 32000.0f;
+            // TODO process result here
+            boolean result = port.receivePayment(orderNumber, totalPrice);
+            out.println("Result = "+result);
+        } catch (Exception ex) {
+            // TODO handle custom exceptions here
+        }
+        %>
+        <%-- end web service invocation --%><hr/>
     </body>
 </html>

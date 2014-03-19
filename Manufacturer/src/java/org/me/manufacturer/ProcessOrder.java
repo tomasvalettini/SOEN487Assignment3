@@ -7,7 +7,9 @@
 package org.me.manufacturer;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
+import java.io.InputStream;
 import javax.servlet.ServletContext;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -19,6 +21,8 @@ import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 /**
@@ -43,12 +47,21 @@ public class ProcessOrder
         path = req.getRealPath("WEB-INF");
     }
     
+    private static String getValue(String tag, Element element) 
+    {
+            NodeList nodes = element.getElementsByTagName(tag).item(0).getChildNodes();
+            Node node = (Node) nodes.item(0);
+            return node.getNodeValue();
+    }
+    
     public void process(PurchaseOrder po)
     {
         //process xml bitch
         // Processing the purchase order, needs to be added to the xml file        
         File file = new File(path + "/" + ORDERS_XML);
-        try{
+        
+        try
+        {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             InputSource is = new InputSource();
@@ -94,5 +107,43 @@ public class ProcessOrder
         {
             System.out.println("Error: " + e.getMessage());
         }
+    }
+
+    public boolean processPayment(int orderNumber, float totalPrice)
+    {
+        boolean paid = false;
+        
+        try
+        {
+            DocumentBuilderFactory domfac = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dombuilder;
+            dombuilder = domfac.newDocumentBuilder();
+            InputStream is = new FileInputStream(path + "/" + ORDERS_XML);
+            Document doc;
+            doc = dombuilder.parse(is);
+            Element titleInfo = doc.getDocumentElement();
+            NodeList products = titleInfo.getElementsByTagName("order");
+            for (int i = 0; i < products.getLength(); i++) 
+            {
+                Node product = products.item(i);
+                if (product.getNodeType() == Node.ELEMENT_NODE) 
+                {
+                    Element element = (Element) product;
+                    if( Integer.parseInt(getValue("orderNum", element)) == (orderNumber) &&
+                        Float.parseFloat(getValue("orderTotal", element)) == (totalPrice))
+                    {
+                        element.getElementsByTagName("status").item(0).setTextContent("paid");
+                        paid = true;
+                    }
+                }
+            }
+        }
+        catch (Exception e)
+        {
+                System.out.println("Caught Exception: ");
+                e.printStackTrace();		
+        }
+        
+        return paid;
     }
 }
