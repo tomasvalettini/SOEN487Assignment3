@@ -42,12 +42,22 @@
             org.me.manufacturer.ManufacturerWS_Service service = new org.me.manufacturer.ManufacturerWS_Service();
             org.me.manufacturer.ManufacturerWS port = service.getManufacturerWSPort();
              // TODO initialize WS operation arguments here
-            java.lang.String productName = "TV";
-            java.lang.String productBrand = "Brand1";
-            float unitPrice = 800;
-            int quantity = 40;
+          
+            org.me.manufacturer.Product prod = new org.me.manufacturer.Product();
+            prod.setManufacturerName("Brand1");
+            prod.setProductType("TV");
+            prod.setUnitPrice(800);
+            org.me.manufacturer.PurchaseOrder po = new org.me.manufacturer.PurchaseOrder();
+            po.setOrderNum(111);
+            po.setCustomerRef("tom");
+            po.setProduct(prod);
+            po.setQuantity(40);
+            po.setUnitPrice(800);
+            
+            int quantity = 0;
             // TODO process result here
-            boolean result = port.processPurchasePrder(productName, productBrand, unitPrice, quantity);
+            boolean result = port.processPurchasePrder(po, quantity);
+            
             out.println("Result = "+result);
         } catch (Exception ex) {
             // TODO handle custom exceptions here
@@ -55,5 +65,6 @@
         %>
         <%-- end web service invocation --%><hr/>
 
+        <h1>Receive Payment</h1>
     </body>
 </html>

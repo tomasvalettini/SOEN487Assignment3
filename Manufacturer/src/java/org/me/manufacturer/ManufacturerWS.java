@@ -143,14 +143,12 @@ public class ManufacturerWS
 
     /**
      * Web service operation
-     * @param productName
-     * @param productBrand
-     * @param unitPrice
+     * @param po
      * @param quantity
      * @return 
      */
     @WebMethod(operationName = "processPurchasePrder")
-    public boolean processPurchasePrder(@WebParam(name = "productName") String productName, @WebParam(name = "productBrand") String productBrand, @WebParam(name = "unitPrice") float unitPrice, @WebParam(name = "quantity") int quantity) {
+    public boolean processPurchasePrder(@WebParam(name = "purchaseOrder") PurchaseOrder po, @WebParam(name = "quantity") int quantity) {
         boolean processed = false;
         try { 
             DocumentBuilderFactory domfac = DocumentBuilderFactory.newInstance();
@@ -171,14 +169,20 @@ public class ManufacturerWS
                 if (product.getNodeType() == Node.ELEMENT_NODE) 
                 {
                     Element element = (Element) product;
-                    if( getValue("manufacturerName", element).equals(productBrand) &&
-                        getValue("productType", element).equals(productName) &&   
-                        Float.parseFloat(getValue("unitPrice", element))<= unitPrice)
+                    if( getValue("manufacturerName", element).equals(po.getProduct().getManufacturerName()) &&
+                        getValue("productType", element).equals(po.getProduct().getProductType()) &&   
+                        Float.parseFloat(getValue("unitPrice", element))<= po.getProduct().getUnitPrice())
                     {
-                        //produce();
-                        processed = true;
+                        processed = produce(po.getProduct().getProductType(), quantity);
+                        break;
                     }
                 }
+            }
+            
+            if (processed)
+            {
+                ProcessOrder prodOr = new ProcessOrder(wsc);
+                prodOr.process(po);
             }
         }
         catch (Exception e)

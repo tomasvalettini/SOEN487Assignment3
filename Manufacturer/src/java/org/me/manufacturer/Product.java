@@ -26,12 +26,13 @@ public class Product {
         _unitPrice = 0;
     }
     
-    public Product(String mn, String pt, float up)
+    public Product(String _manufacturerName, String _productType, float _unitPrice)
     {
-        _manufacturerName =mn;
-        _productType = pt;
-        _unitPrice = up;
+        this._manufacturerName = _manufacturerName;
+        this._productType = _productType;
+        this._unitPrice = _unitPrice;
     }
+
       
     /**
      * @return the _manufacturerName
