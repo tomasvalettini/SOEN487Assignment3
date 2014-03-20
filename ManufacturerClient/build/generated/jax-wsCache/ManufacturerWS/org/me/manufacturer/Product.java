@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="manufacturerName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="productName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="productType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="unitPrice" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *       &lt;/sequence>
@@ -30,12 +31,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "product", propOrder = {
     "manufacturerName",
+    "productName",
     "productType",
     "unitPrice"
 })
 public class Product {
 
     protected String manufacturerName;
+    protected String productName;
     protected String productType;
     protected float unitPrice;
 
@@ -61,6 +64,30 @@ public class Product {
      */
     public void setManufacturerName(String value) {
         this.manufacturerName = value;
+    }
+
+    /**
+     * Gets the value of the productName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getProductName() {
+        return productName;
+    }
+
+    /**
+     * Sets the value of the productName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setProductName(String value) {
+        this.productName = value;
     }
 
     /**

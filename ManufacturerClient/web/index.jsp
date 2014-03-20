@@ -31,8 +31,9 @@
             
             java.util.List<org.me.warehouse.OrderItem> items = new java.util.ArrayList<org.me.warehouse.OrderItem>();
             items.add(oi);
+            org.me.warehouse.OrderList orders = new org.me.warehouse.OrderList();
             // TODO process result here
-            java.util.List<org.me.warehouse.OrderItem> result = port.shipGoods(items);
+            java.util.List<org.me.warehouse.OrderItem> result = port.shipGoods(orders);
             
             for (int i = 0; i < result.size(); i++)
             {

@@ -17,7 +17,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="purchaseOrder" type="{http://manufacturer.me.org/}purchaseOrder" minOccurs="0"/>
- *         &lt;element name="quantity" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -28,13 +27,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "processPurchasePrder", propOrder = {
-    "purchaseOrder",
-    "quantity"
+    "purchaseOrder"
 })
 public class ProcessPurchasePrder {
 
     protected PurchaseOrder purchaseOrder;
-    protected int quantity;
 
     /**
      * Gets the value of the purchaseOrder property.
@@ -58,22 +55,6 @@ public class ProcessPurchasePrder {
      */
     public void setPurchaseOrder(PurchaseOrder value) {
         this.purchaseOrder = value;
-    }
-
-    /**
-     * Gets the value of the quantity property.
-     * 
-     */
-    public int getQuantity() {
-        return quantity;
-    }
-
-    /**
-     * Sets the value of the quantity property.
-     * 
-     */
-    public void setQuantity(int value) {
-        this.quantity = value;
     }
 
 }

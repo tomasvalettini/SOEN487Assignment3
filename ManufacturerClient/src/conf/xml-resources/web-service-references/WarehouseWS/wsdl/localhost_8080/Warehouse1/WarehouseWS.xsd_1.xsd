@@ -8,7 +8,13 @@
 
 <xs:complexType name="shipGoods">
 <xs:sequence>
-<xs:element name="items" type="tns:orderItem" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="items" type="tns:orderList" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="orderList">
+<xs:sequence>
+<xs:element name="_items" type="tns:orderItem" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 

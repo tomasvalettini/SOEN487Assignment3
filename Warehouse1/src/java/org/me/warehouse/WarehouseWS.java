@@ -104,8 +104,9 @@ public class WarehouseWS {
      * @param itemList
      */
     @WebMethod(operationName = "shipGoods")
-    public ArrayList<OrderItem> shipGoods(@WebParam(name = "items") ArrayList<OrderItem> itemList) {
+    public ArrayList<OrderItem> shipGoods(@WebParam(name = "items") OrderList items) {
         ArrayList<OrderItem> shippedItems = new ArrayList<>();
+        ArrayList<OrderItem> itemList = items.getItems();
         try { 
             DocumentBuilderFactory domfac = DocumentBuilderFactory.newInstance();
             DocumentBuilder dombuilder;
