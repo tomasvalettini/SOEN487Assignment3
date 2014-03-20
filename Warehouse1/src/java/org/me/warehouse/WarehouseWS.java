@@ -127,23 +127,23 @@ public class WarehouseWS {
                
                 for(int i=0;i<inventory.getLength();i++)
                 {
-                    Element xmlItem = (Element) inventory.item(i);
+                    Element InventoryItem = (Element) inventory.item(i);
                     
-                    if(tmp.getProduct().getProductName().equals(xmlItem.getAttribute("name")))
+                    if(tmp.getProduct().getProductName().equals(InventoryItem.getAttribute("name")))
                     {
-                        int newQuantity = Integer.parseInt(xmlItem.getAttribute("quantity")) - tmp.getQuantity();
+                        int newQuantity = Integer.parseInt(InventoryItem.getAttribute("quantity")) - tmp.getQuantity();
 
                         if(newQuantity >= 0)
                         {
-                            xmlItem.getElementsByTagName("quantity").item(0).setTextContent(Integer.toString(newQuantity));
+                            InventoryItem.getElementsByTagName("quantity").item(0).setTextContent(Integer.toString(newQuantity));
                             shippedItems.add(tmp);
 
                         }
                         else
                         {
-                            tmp.setQuantity(Integer.parseInt(xmlItem.getAttribute("quantity")));
+                            tmp.setQuantity(Integer.parseInt(InventoryItem.getAttribute("quantity")));
                             shippedItems.add(tmp);
-                            xmlItem.getElementsByTagName("quantity").item(0).setTextContent("0");
+                            InventoryItem.getElementsByTagName("quantity").item(0).setTextContent("0");
                         }
                         break;
                     }
