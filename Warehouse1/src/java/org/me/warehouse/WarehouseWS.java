@@ -101,6 +101,7 @@ public class WarehouseWS {
     
     /**
      * Web service operation
+     * @param itemList
      */
     @WebMethod(operationName = "shipGoods")
     public ArrayList<OrderItem> shipGoods(@WebParam(name = "items") ArrayList<OrderItem> itemList) {

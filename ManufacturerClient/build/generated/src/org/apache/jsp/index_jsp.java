@@ -70,7 +70,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
             oi.setProduct(p);
             oi.setQuantity(50);
             
-            java.util.List<org.me.warehouse.OrderItem> items = null;
+            java.util.List<org.me.warehouse.OrderItem> items = new java.util.ArrayList<org.me.warehouse.OrderItem>();
             items.add(oi);
             // TODO process result here
             java.util.List<org.me.warehouse.OrderItem> result = port.shipGoods(items);
@@ -80,7 +80,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
                 System.out.print(result.get(i).getProduct().getProductName() + " // " + result.get(i).getQuantity() + "<br />");
             }
         } catch (Exception ex) {
-            // TODO handle custom exceptions here
+            ex.printStackTrace();
         }
         
       out.write("\r\n");
