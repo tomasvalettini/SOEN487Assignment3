@@ -6,8 +6,6 @@
 
 package org.me.warehouse;
 
-import org.me.manufacturer.Product;
-
 /**
  *
  * @author deven.collette

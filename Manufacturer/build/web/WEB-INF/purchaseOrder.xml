@@ -1,20 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><ordersList>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><orderList>
     <order>
         <orderNum>111</orderNum>
         <customerRef>tom</customerRef>
         <product>TV</product>
         <quantity>40</quantity>
         <unitPrice>800.0</unitPrice>
-        <status>submitted</status>
+        <status>paid</status>
         <orderTotal>32000.0</orderTotal>
     </order>
-    <order>
-        <orderNum>111</orderNum>
-        <customerRef>tom</customerRef>
-        <product>TV</product>
-        <quantity>40</quantity>
-        <unitPrice>800.0</unitPrice>
-        <status>submitted</status>
-        <orderTotal>32000.0</orderTotal>
-    </order>
-</ordersList>
+</orderList>

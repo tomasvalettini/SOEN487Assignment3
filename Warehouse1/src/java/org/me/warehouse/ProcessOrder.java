@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package org.me.manufacturer;
+package org.me.warehouse;
 
 import java.io.File;
 import java.io.FileInputStream;

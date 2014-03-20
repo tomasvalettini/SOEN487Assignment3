@@ -20,8 +20,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
-import org.me.manufacturer.Product;
-import org.me.manufacturer.PurchaseOrder;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -37,6 +35,7 @@ public class WarehouseWS {
 
     @Resource private WebServiceContext wsc;
     private static int orderNum=0;
+    private static int THRESHOLD = 50;
      
     private void replenish(){
     
@@ -55,7 +54,7 @@ public class WarehouseWS {
             for (int i = 0; i < product.getLength(); i++) {
                 Element xmlItem = (Element) product.item(i);
 
-                if (Integer.parseInt(xmlItem.getAttribute("quantity"))< 100) 
+                if (Integer.parseInt(xmlItem.getAttribute("quantity"))< THRESHOLD) 
                 {
                     // need to custom order
                     //PurchaseOrder order = new PurchaseOrder();
