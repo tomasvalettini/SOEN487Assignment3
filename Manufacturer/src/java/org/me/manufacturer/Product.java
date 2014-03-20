@@ -18,6 +18,15 @@ public class Product {
     private String _manufacturerName;
     private String _productType;
     private float _unitPrice;
+    private String _productName;
+
+    public String getProductName() {
+        return _productName;
+    }
+
+    public void setProductName(String _productName) {
+        this._productName = _productName;
+    }
     
     public Product()
     {

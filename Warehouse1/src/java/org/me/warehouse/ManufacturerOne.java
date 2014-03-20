@@ -6,7 +6,8 @@
 
 package org.me.warehouse;
 
-import java.util.List;
+import org.me.manufacturer.Product;
+import org.me.manufacturer.PurchaseOrder;
 
 /**
  *
@@ -15,7 +16,7 @@ import java.util.List;
 class ManufacturerOne extends AbstractManufacturer
 {
     @Override
-    public List<Product> getProductInfo(String productType)
+    public Product getProductInfo(String productType)
     {
         org.me.manufacturer.ManufacturerWS_Service service = new org.me.manufacturer.ManufacturerWS_Service();
         org.me.manufacturer.ManufacturerWS port = service.getManufacturerWSPort();
@@ -23,11 +24,11 @@ class ManufacturerOne extends AbstractManufacturer
     }
 
     @Override
-    public boolean processPurchasePrder(PurchaseOrder purchaseOrder, int quantity)
+    public boolean processPurchasePrder(PurchaseOrder purchaseOrder)
     {
         org.me.manufacturer.ManufacturerWS_Service service = new org.me.manufacturer.ManufacturerWS_Service();
         org.me.manufacturer.ManufacturerWS port = service.getManufacturerWSPort();
-        return port.processPurchasePrder(purchaseOrder, quantity);
+        return port.processPurchasePrder(purchaseOrder);
     }
 
     @Override

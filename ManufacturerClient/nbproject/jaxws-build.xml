@@ -42,5 +42,21 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/org/me/manufacturer"/>
         <delete dir="${build.generated.dir}/jax-wsCache/ManufacturerWS"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-ManufacturerWS"/>
+    <target name="wsimport-client-WarehouseWS" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/WarehouseWS"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WarehouseWS" destdir="${build.generated.dir}/jax-wsCache/WarehouseWS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/WarehouseWS/wsdl/localhost_8080/Warehouse1/WarehouseWS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Warehouse1/WarehouseWS?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/WarehouseWS/wsdl/localhost_8080/Warehouse1/WarehouseWS.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/WarehouseWS"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/WarehouseWS">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-WarehouseWS" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/me/warehouse"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/WarehouseWS"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-ManufacturerWS, wsimport-client-WarehouseWS"/>
 </project>

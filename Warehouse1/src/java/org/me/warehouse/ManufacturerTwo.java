@@ -7,6 +7,8 @@
 package org.me.warehouse;
 
 import java.util.List;
+import org.me.manufacturer.Product;
+import org.me.manufacturer.PurchaseOrder;
 
 /**
  *
@@ -15,12 +17,12 @@ import java.util.List;
 class ManufacturerTwo extends AbstractManufacturer
 {
     @Override
-    public List<Product> getProductInfo(String productType) {
+    public Product getProductInfo(String productType) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean processPurchasePrder(PurchaseOrder purchaseOrder, int quantity) {
+    public boolean processPurchasePrder(PurchaseOrder purchaseOrder) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

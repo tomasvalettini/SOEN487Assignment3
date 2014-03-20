@@ -20,6 +20,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
+import org.me.manufacturer.Product;
+import org.me.manufacturer.PurchaseOrder;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -36,6 +38,8 @@ public class WarehouseWS {
     @Resource private WebServiceContext wsc;
     private static int orderNum=0;
     private static int THRESHOLD = 50;
+    private final int REPLENISH_AMOUNT = 100;
+    private final String SELF = "Warehouse_Uno";
     
     private String getValue(String tag, Element element) 
     {
@@ -67,7 +71,25 @@ public class WarehouseWS {
 
                 if (Integer.parseInt(getValue("quantity", xmlItem)) < THRESHOLD) 
                 {
-                    AbstractManufacturer am = ManufacturerFactory.getInstance().getManufacturer(xmlItem.getAttribute("name"));
+                    String h = xmlItem.getAttribute("name");
+                    AbstractManufacturer am = ManufacturerFactory.getInstance().getManufacturer(h);
+                    Product p = am.getProductInfo(h);
+                    
+                    if (p != null)
+                    {
+                        PurchaseOrder po = new PurchaseOrder();
+                        po.setOrderNum(orderNum++);
+                        po.setCustomerRef(SELF);
+                        po.setProduct(p);
+                        po.setQuantity(REPLENISH_AMOUNT);
+                        po.setUnitPrice(p.getUnitPrice() + 5);
+                        
+                        if (am.processPurchasePrder(po))
+                        {
+                            xmlItem.getElementsByTagName("quantity").item(0).setTextContent(String.valueOf(Integer.parseInt(getValue("quantity", xmlItem)) + REPLENISH_AMOUNT));
+                            am.receivePayment(po.getOrderNum(), po.getQuantity() * po.getUnitPrice());
+                        }
+                    }
                 }
             }
         }
@@ -105,8 +127,7 @@ public class WarehouseWS {
                 {
                     Element xmlItem = (Element) inventory.item(i);
                     
-                    if(tmp.getProduct().getProductType().equals(xmlItem.getAttribute("productType")) &&
-                       tmp.getProduct().getManufacturerName().equals(xmlItem.getAttribute("manufacturerName")))
+                    if(tmp.getProduct().getProductName().equals(xmlItem.getAttribute("name")))
                     {
                         int newQuantity = Integer.parseInt(xmlItem.getAttribute("quantity")) - tmp.getQuantity();
 

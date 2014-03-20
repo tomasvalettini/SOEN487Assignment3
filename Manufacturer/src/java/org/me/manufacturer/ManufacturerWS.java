@@ -8,7 +8,6 @@ package org.me.manufacturer;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
 import javax.annotation.Resource;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -82,6 +81,7 @@ public class ManufacturerWS
                         prod.setManufacturerName(getValue("manufacturerName", element));
                         prod.setProductType(getValue("productType", element));
                         prod.setUnitPrice(Float.parseFloat(getValue("unitPrice", element)));
+                        prod.setProductName(element.getAttribute("name"));
                     }
                 }
             }
@@ -91,7 +91,7 @@ public class ManufacturerWS
                 System.out.println("Caught Exception: ");
                 e.printStackTrace();		
         }
-        return productList;
+        return prod;
     }
 
     /**
@@ -115,48 +115,56 @@ public class ManufacturerWS
      * @return 
      */
     @WebMethod(operationName = "processPurchasePrder")
-    public boolean processPurchasePrder(@WebParam(name = "purchaseOrder") PurchaseOrder po, @WebParam(name = "quantity") int quantity) {
-        boolean processed = false;
-        try { 
-            DocumentBuilderFactory domfac = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dombuilder;
-            dombuilder = domfac.newDocumentBuilder();
-            MessageContext ctxt = wsc.getMessageContext();
-            ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
-            String path = req.getRealPath("WEB-INF");
-            InputStream is = new FileInputStream(path + "/productInfo.xml");
-            Document doc;
-            doc = dombuilder.parse(is);
-            Element titleInfo = doc.getDocumentElement();
-            NodeList products = titleInfo.getElementsByTagName("product");
-            for (int i = 0; i < products.getLength(); i++) 
-            {
-                Node product = products.item(i);
-
-                if (product.getNodeType() == Node.ELEMENT_NODE) 
+    public boolean processPurchasePrder(@WebParam(name = "purchaseOrder") PurchaseOrder po)
+    {
+        if(po.getUnitPrice() >= po.getProduct().getUnitPrice())
+        {
+            boolean processed = false;
+            try { 
+                DocumentBuilderFactory domfac = DocumentBuilderFactory.newInstance();
+                DocumentBuilder dombuilder;
+                dombuilder = domfac.newDocumentBuilder();
+                MessageContext ctxt = wsc.getMessageContext();
+                ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
+                String path = req.getRealPath("WEB-INF");
+                InputStream is = new FileInputStream(path + "/productInfo.xml");
+                Document doc;
+                doc = dombuilder.parse(is);
+                Element titleInfo = doc.getDocumentElement();
+                NodeList products = titleInfo.getElementsByTagName("product");
+                for (int i = 0; i < products.getLength(); i++) 
                 {
-                    Element element = (Element) product;
-                    if( getValue("manufacturerName", element).equals(po.getProduct().getManufacturerName()) &&
-                        getValue("productType", element).equals(po.getProduct().getProductType()) &&   
-                        Float.parseFloat(getValue("unitPrice", element))<= po.getProduct().getUnitPrice())
+                    Node product = products.item(i);
+
+                    if (product.getNodeType() == Node.ELEMENT_NODE) 
                     {
-                        processed = produce(po.getProduct().getProductType(), quantity);
-                        break;
+                        Element element = (Element) product;
+                        if( getValue("manufacturerName", element).equals(po.getProduct().getManufacturerName()) &&
+                            getValue("productType", element).equals(po.getProduct().getProductType()) &&   
+                            Float.parseFloat(getValue("unitPrice", element))<= po.getProduct().getUnitPrice())
+                        {
+                            processed = produce(po.getProduct().getProductType(), po.getQuantity());
+                            break;
+                        }
                     }
                 }
+
+                if (processed)
+                {
+                    ProcessOrder prodOr = new ProcessOrder(wsc);
+                    prodOr.process(po);
+                }
             }
-            
-            if (processed)
+            catch (Exception e)
             {
-                ProcessOrder prodOr = new ProcessOrder(wsc);
-                prodOr.process(po);
+                    System.out.println("Caught Exception: ");
+                    e.printStackTrace();		
             }
+            return processed;
         }
-        catch (Exception e)
+        else
         {
-                System.out.println("Caught Exception: ");
-                e.printStackTrace();		
+            return false;
         }
-        return processed;
     }
 }

@@ -6,7 +6,8 @@
 
 package org.me.warehouse;
 
-import java.util.List;
+import org.me.manufacturer.Product;
+import org.me.manufacturer.PurchaseOrder;
 
 /**
  *
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public abstract class AbstractManufacturer
 {
-    public abstract List<Product> getProductInfo(String productType);
-    public abstract boolean processPurchasePrder(PurchaseOrder purchaseOrder, int quantity);
+    public abstract Product getProductInfo(String productType);
+    public abstract boolean processPurchasePrder(PurchaseOrder purchaseOrder);
     public abstract boolean receivePayment(int orderNumber, float totalPrice);
 }
