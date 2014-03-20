@@ -53,9 +53,9 @@ public class ManufacturerWS
      * @return 
      */
     @WebMethod(operationName = "getProductInfo")
-    public ArrayList<Product> getProductInfo(@WebParam(name = "productType") String productType)
+    public Product getProductInfo(@WebParam(name = "productType") String productType)
     {        
-        ArrayList<Product> productList = new ArrayList<>();
+        Product prod = new Product();
         
         try
         { 
@@ -77,11 +77,11 @@ public class ManufacturerWS
                 if (product.getNodeType() == Node.ELEMENT_NODE) 
                 {
                     Element element = (Element) product;
-                    if( getValue("productType", element).equals(productType))
+                    if(element.getAttribute("name").equals("productType"))
                     {
-                        productList.add(new Product(getValue("manufacturerName", element),
-                                                    getValue("productType", element),
-                                                    Float.parseFloat(getValue("unitPrice", element))));
+                        prod.setManufacturerName(getValue("manufacturerName", element));
+                        prod.setProductType(getValue("productType", element));
+                        prod.setUnitPrice(Float.parseFloat(getValue("unitPrice", element)));
                     }
                 }
             }

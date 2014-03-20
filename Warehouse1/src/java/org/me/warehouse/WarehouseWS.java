@@ -36,32 +36,43 @@ public class WarehouseWS {
     @Resource private WebServiceContext wsc;
     private static int orderNum=0;
     private static int THRESHOLD = 50;
-     
-    private void replenish(){
     
+    private String getValue(String tag, Element element) 
+    {
+            NodeList nodes = element.getElementsByTagName(tag).item(0).getChildNodes();
+            Node node = (Node) nodes.item(0);
+            return node.getNodeValue();
+    }
+     
+    private void replenish()
+    {
         MessageContext ctxt = wsc.getMessageContext();
         ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
         String path = req.getRealPath("WEB-INF");
         path += "/inventory.xml";
         File file = new File(path);
-        try{
+        
+        try
+        {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             InputSource is = new InputSource();
             is.setCharacterStream(new FileReader(file));
             Document doc = db.parse(is);
             NodeList product = doc.getElementsByTagName("item");
-            for (int i = 0; i < product.getLength(); i++) {
+            
+            for (int i = 0; i < product.getLength(); i++)
+            {
                 Element xmlItem = (Element) product.item(i);
 
-                if (Integer.parseInt(xmlItem.getAttribute("quantity"))< THRESHOLD) 
+                if (Integer.parseInt(getValue("quantity", xmlItem)) < THRESHOLD) 
                 {
-                    // need to custom order
-                    //PurchaseOrder order = new PurchaseOrder();
+                    AbstractManufacturer am = ManufacturerFactory.getInstance().getManufacturer(xmlItem.getAttribute("name"));
                 }
-                    
             }
-        } catch(Exception e){
+        }
+        catch(Exception e)
+        {
             System.out.println("Error: " + e.getMessage());
         }
     }
@@ -121,8 +132,8 @@ public class WarehouseWS {
                 System.out.println("Caught Exception: ");
                 e.printStackTrace();		
         }
+        
         replenish();
         return shippedItems;
-        
     }
 }

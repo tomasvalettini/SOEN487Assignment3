@@ -4,9 +4,6 @@
     <service name="WarehouseWS">
       <implementation-class>org.me.warehouse.WarehouseWS</implementation-class>
     </service>
-    <service name="ManufacturerWS">
-      <implementation-class>org.me.manufacturer.ManufacturerWS</implementation-class>
-    </service>
   </services>
   <clients>
     <client name="ManufacturerWS">
