@@ -27,6 +27,7 @@ public interface ManufacturerWS {
     /**
      * 
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @param productType
      * @return
      *     returns org.me.manufacturer.Product
@@ -42,6 +43,8 @@ public interface ManufacturerWS {
 
     /**
      * 
+=======
+>>>>>>> da5b1c0ff27b6e848e7a0a28497b967e30010819
 =======
 >>>>>>> da5b1c0ff27b6e848e7a0a28497b967e30010819
      * @param orderNumber
@@ -63,7 +66,10 @@ public interface ManufacturerWS {
     /**
      * 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> da5b1c0ff27b6e848e7a0a28497b967e30010819
      * @param productType
      * @return
      *     returns org.me.manufacturer.Product
@@ -79,6 +85,9 @@ public interface ManufacturerWS {
 
     /**
      * 
+<<<<<<< HEAD
+>>>>>>> da5b1c0ff27b6e848e7a0a28497b967e30010819
+=======
 >>>>>>> da5b1c0ff27b6e848e7a0a28497b967e30010819
      * @param purchaseOrder
      * @return
