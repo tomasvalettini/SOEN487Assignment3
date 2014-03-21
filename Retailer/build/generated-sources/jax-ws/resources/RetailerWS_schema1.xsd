@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://retailer.me.org/" xmlns:tns="http://retailer.me.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="getCatalog" type="tns:getCatalog"/>
+
+  <xs:element name="getCatalogResponse" type="tns:getCatalogResponse"/>
+
+  <xs:element name="submitOrder" type="tns:submitOrder"/>
+
+  <xs:element name="submitOrderResponse" type="tns:submitOrderResponse"/>
+
+  <xs:complexType name="getCatalog">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getCatalogResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:orderItem" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="orderItem">
+    <xs:sequence>
+      <xs:element name="product" type="tns:product" minOccurs="0"/>
+      <xs:element name="quantity" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="product">
+    <xs:sequence>
+      <xs:element name="manufacturerName" type="xs:string" minOccurs="0"/>
+      <xs:element name="productName" type="xs:string" minOccurs="0"/>
+      <xs:element name="productType" type="xs:string" minOccurs="0"/>
+      <xs:element name="unitPrice" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="submitOrder">
+    <xs:sequence>
+      <xs:element name="orderItemList" type="tns:orderItem" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="submitOrderResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:orderItem" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

@@ -26,6 +26,7 @@ public interface ManufacturerWS {
 
     /**
      * 
+<<<<<<< HEAD
      * @param productType
      * @return
      *     returns org.me.manufacturer.Product
@@ -41,6 +42,8 @@ public interface ManufacturerWS {
 
     /**
      * 
+=======
+>>>>>>> da5b1c0ff27b6e848e7a0a28497b967e30010819
      * @param orderNumber
      * @param totalPrice
      * @return
@@ -59,6 +62,24 @@ public interface ManufacturerWS {
 
     /**
      * 
+<<<<<<< HEAD
+=======
+     * @param productType
+     * @return
+     *     returns org.me.manufacturer.Product
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getProductInfo", targetNamespace = "http://manufacturer.me.org/", className = "org.me.manufacturer.GetProductInfo")
+    @ResponseWrapper(localName = "getProductInfoResponse", targetNamespace = "http://manufacturer.me.org/", className = "org.me.manufacturer.GetProductInfoResponse")
+    @Action(input = "http://manufacturer.me.org/ManufacturerWS/getProductInfoRequest", output = "http://manufacturer.me.org/ManufacturerWS/getProductInfoResponse")
+    public Product getProductInfo(
+        @WebParam(name = "productType", targetNamespace = "")
+        String productType);
+
+    /**
+     * 
+>>>>>>> da5b1c0ff27b6e848e7a0a28497b967e30010819
      * @param purchaseOrder
      * @return
      *     returns boolean

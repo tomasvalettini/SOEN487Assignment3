@@ -4,17 +4,17 @@
 <xsd:import namespace="http://manufacturer.me.org/" schemaLocation="http://localhost:8080/Manufacturer/ManufacturerWS?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="getProductInfo">
-<part name="parameters" element="tns:getProductInfo"/>
-</message>
-<message name="getProductInfoResponse">
-<part name="parameters" element="tns:getProductInfoResponse"/>
-</message>
 <message name="receivePayment">
 <part name="parameters" element="tns:receivePayment"/>
 </message>
 <message name="receivePaymentResponse">
 <part name="parameters" element="tns:receivePaymentResponse"/>
+</message>
+<message name="getProductInfo">
+<part name="parameters" element="tns:getProductInfo"/>
+</message>
+<message name="getProductInfoResponse">
+<part name="parameters" element="tns:getProductInfoResponse"/>
 </message>
 <message name="processPurchasePrder">
 <part name="parameters" element="tns:processPurchasePrder"/>
@@ -23,13 +23,13 @@
 <part name="parameters" element="tns:processPurchasePrderResponse"/>
 </message>
 <portType name="ManufacturerWS">
-<operation name="getProductInfo">
-<input wsam:Action="http://manufacturer.me.org/ManufacturerWS/getProductInfoRequest" message="tns:getProductInfo"/>
-<output wsam:Action="http://manufacturer.me.org/ManufacturerWS/getProductInfoResponse" message="tns:getProductInfoResponse"/>
-</operation>
 <operation name="receivePayment">
 <input wsam:Action="http://manufacturer.me.org/ManufacturerWS/receivePaymentRequest" message="tns:receivePayment"/>
 <output wsam:Action="http://manufacturer.me.org/ManufacturerWS/receivePaymentResponse" message="tns:receivePaymentResponse"/>
+</operation>
+<operation name="getProductInfo">
+<input wsam:Action="http://manufacturer.me.org/ManufacturerWS/getProductInfoRequest" message="tns:getProductInfo"/>
+<output wsam:Action="http://manufacturer.me.org/ManufacturerWS/getProductInfoResponse" message="tns:getProductInfoResponse"/>
 </operation>
 <operation name="processPurchasePrder">
 <input wsam:Action="http://manufacturer.me.org/ManufacturerWS/processPurchasePrderRequest" message="tns:processPurchasePrder"/>
@@ -38,7 +38,7 @@
 </portType>
 <binding name="ManufacturerWSPortBinding" type="tns:ManufacturerWS">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="getProductInfo">
+<operation name="receivePayment">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -47,7 +47,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="receivePayment">
+<operation name="getProductInfo">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

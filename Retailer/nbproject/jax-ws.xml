@@ -38,5 +38,37 @@
         </wsimport-option>
       </wsimport-options>
     </client>
+    <client name="ManufacturerWS">
+      <wsdl-url>http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Manufacturer/ManufacturerWS?wsdl</wsdl-url>
+      <local-wsdl-file>ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Manufacturer/ManufacturerWS.wsdl</local-wsdl-file>
+      <package-name>org.me.manufacturer</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>fork</wsimport-option-name>
+          <wsimport-option-value>false</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Manufacturer/ManufacturerWS?wsdl</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xendorsed</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </client>
   </clients>
 </jax-ws>

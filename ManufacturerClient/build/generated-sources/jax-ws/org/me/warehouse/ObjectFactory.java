@@ -59,6 +59,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link OrderList }
+     * 
+     */
+    public OrderList createOrderList() {
+        return new OrderList();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ShipGoodsResponse }{@code >}}
      * 
      */

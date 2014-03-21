@@ -39,6 +39,6 @@ public interface WarehouseWS {
     @Action(input = "http://warehouse.me.org/WarehouseWS/shipGoodsRequest", output = "http://warehouse.me.org/WarehouseWS/shipGoodsResponse")
     public List<OrderItem> shipGoods(
         @WebParam(name = "items", targetNamespace = "")
-        List<OrderItem> items);
+        OrderList items);
 
 }

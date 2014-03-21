@@ -12,6 +12,8 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.xml.ws.WebServiceRef;
+import org.me.manufacturer.ManufacturerWS_Service;
+import org.me.manufacturer.Product;
 import org.me.warehouse.*;
 import org.me.warehouse.WarehouseWS_Service;
 
@@ -21,8 +23,11 @@ import org.me.warehouse.WarehouseWS_Service;
  */
 @WebService(serviceName = "RetailerWS")
 public class RetailerWS {
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Manufacturer/ManufacturerWS.wsdl")
+    private ManufacturerWS_Service service_Manufacturer1;
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Warehouse1/WarehouseWS.wsdl")
-    private WarehouseWS_Service service;
+    private WarehouseWS_Service service_Warehouse1;
+    
     private List<OrderItem> itemsShipped;
     private List<OrderItem> itemsLeft;
     private List<OrderItem> itemsTemp;
@@ -47,9 +52,18 @@ public class RetailerWS {
     
      return itemsShipped;
      }
-
+    @WebMethod(operationName = "getCatalog")
+    public List<OrderItem> getCatalog(){
+        List<OrderItem> catalog = new ArrayList();
+        //CALL THE METHOD TO GET PRODUCTS
+        //MANUFACTURER1
+        //MANUFACTURER2
+        //MANUFACTURER3
+        return catalog;
+    }
+    
     private List<OrderItem> shipGoods1(List<OrderItem> items){
-        org.me.warehouse.WarehouseWS port = service.getWarehouseWSPort();
+        org.me.warehouse.WarehouseWS port = service_Warehouse1.getWarehouseWSPort();
         return port.shipGoods(items);
     }
     
