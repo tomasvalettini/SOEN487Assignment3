@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><inventory>
+<?xml version="1.0" encoding="UTF-8"?>
+<inventory>
     <item name="Brand1TV">
        <manufacturerName>Brand1</manufacturerName>
        <productType>TV</productType>
@@ -9,48 +10,48 @@
        <manufacturerName>Brand1</manufacturerName>
        <productType>CAM</productType>
        <unitPrice>100</unitPrice>
-       <quantity>342</quantity>
+       <quantity>344</quantity>
     </item>
     <item name="Brand1DVD">
        <manufacturerName>Brand1</manufacturerName>
        <productType>DVD</productType>
        <unitPrice>10</unitPrice>
-       <quantity>70</quantity>
+       <quantity>71</quantity>
     </item>
     <item name="Brand2TV">
        <manufacturerName>Brand2</manufacturerName>
        <productType>TV</productType>
        <unitPrice>2500</unitPrice>
-       <quantity>177</quantity>
+       <quantity>178</quantity>
     </item>
     <item name="Brand2CAM">
        <manufacturerName>Brand2</manufacturerName>
        <productType>CAM</productType>
        <unitPrice>250</unitPrice>
-       <quantity>319</quantity>
+       <quantity>320</quantity>
     </item>
     <item name="Brand2DVD">
        <manufacturerName>Brand2</manufacturerName>
        <productType>DVD</productType>
        <unitPrice>25</unitPrice>
-       <quantity>56</quantity>
+       <quantity>57</quantity>
     </item>
     <item name="Brand3TV">
        <manufacturerName>Brand3</manufacturerName>
        <productType>TV</productType>
        <unitPrice>3500</unitPrice>
-       <quantity>105</quantity>
+       <quantity>106</quantity>
     </item>
     <item name="Brand3CAM">
        <manufacturerName>Brand3</manufacturerName>
        <productType>CAM</productType>
        <unitPrice>2500</unitPrice>
-       <quantity>382</quantity>
+       <quantity>383</quantity>
     </item>
     <item name="Brand3DVD">
        <manufacturerName>Brand3</manufacturerName>
        <productType>DVD</productType>
        <unitPrice>15</unitPrice>
-       <quantity>54</quantity>
+       <quantity>55</quantity>
     </item>
 </inventory>

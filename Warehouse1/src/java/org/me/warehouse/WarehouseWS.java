@@ -127,7 +127,7 @@ public class WarehouseWS
             Element root = doc.getDocumentElement();
             Element titleInfo = doc.getDocumentElement();
             NodeList inventory = titleInfo.getElementsByTagName("item");
-             System.out.println("PATH OF XML: " + path + "/inventory.xml");
+            System.out.println("PATH OF XML: " + path + "/inventory.xml");
             
             for(int t=0;t<itemList.size();t++)
             {

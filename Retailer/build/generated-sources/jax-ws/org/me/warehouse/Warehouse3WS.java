@@ -27,6 +27,18 @@ public interface Warehouse3WS {
 
     /**
      * 
+     * @return
+     *     returns org.me.warehouse.ProductList
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getProducts", targetNamespace = "http://warehouse.me.org/", className = "org.me.warehouse.GetProducts")
+    @ResponseWrapper(localName = "getProductsResponse", targetNamespace = "http://warehouse.me.org/", className = "org.me.warehouse.GetProductsResponse")
+    @Action(input = "http://warehouse.me.org/Warehouse3WS/getProductsRequest", output = "http://warehouse.me.org/Warehouse3WS/getProductsResponse")
+    public ProductList getProducts();
+
+    /**
+     * 
      * @param items
      * @return
      *     returns org.me.warehouse.ShippedList
@@ -39,17 +51,5 @@ public interface Warehouse3WS {
     public ShippedList shipGoods(
         @WebParam(name = "items", targetNamespace = "")
         OrderList items);
-
-    /**
-     * 
-     * @return
-     *     returns org.me.warehouse.ProductList
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getProducts", targetNamespace = "http://warehouse.me.org/", className = "org.me.warehouse.GetProducts")
-    @ResponseWrapper(localName = "getProductsResponse", targetNamespace = "http://warehouse.me.org/", className = "org.me.warehouse.GetProductsResponse")
-    @Action(input = "http://warehouse.me.org/Warehouse3WS/getProductsRequest", output = "http://warehouse.me.org/Warehouse3WS/getProductsResponse")
-    public ProductList getProducts();
 
 }

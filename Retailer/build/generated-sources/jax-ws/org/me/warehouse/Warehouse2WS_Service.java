@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "Warehouse2WS", targetNamespace = "http://warehouse.me.org/", wsdlLocation = "http://localhost:8080/Warehouse2/Warehouse2WS?wsdl")
+@WebServiceClient(name = "Warehouse2WS", targetNamespace = "http://warehouse.me.org/", wsdlLocation = "http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Warehouse2/Warehouse2WS?wsdl")
 public class Warehouse2WS_Service
     extends Service
 {
@@ -30,7 +30,7 @@ public class Warehouse2WS_Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://localhost:8080/Warehouse2/Warehouse2WS?wsdl");
+            url = new URL("http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Warehouse2/Warehouse2WS?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

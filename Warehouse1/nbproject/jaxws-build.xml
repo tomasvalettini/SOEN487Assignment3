@@ -45,8 +45,8 @@
     </target>
     <target name="wsimport-client-ManufacturerWS" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/ManufacturerWS"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ManufacturerWS" destdir="${build.generated.dir}/jax-wsCache/ManufacturerWS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ManufacturerWS/wsdl/localhost_8080/Manufacturer/ManufacturerWS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Manufacturer/ManufacturerWS?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ManufacturerWS/wsdl/localhost_8080/Manufacturer/ManufacturerWS.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ManufacturerWS" destdir="${build.generated.dir}/jax-wsCache/ManufacturerWS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ManufacturerWS/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Manufacturer/ManufacturerWS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Manufacturer/ManufacturerWS?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ManufacturerWS/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Manufacturer/ManufacturerWS.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/ManufacturerWS"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
@@ -61,8 +61,8 @@
     </target>
     <target name="wsimport-client-Manufacturer2WS" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/Manufacturer2WS"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Manufacturer2WS" destdir="${build.generated.dir}/jax-wsCache/Manufacturer2WS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer2WS/wsdl/localhost_8080/Manufacturer2/Manufacturer2WS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Manufacturer2/Manufacturer2WS?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer2WS/wsdl/localhost_8080/Manufacturer2/Manufacturer2WS.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Manufacturer2WS" destdir="${build.generated.dir}/jax-wsCache/Manufacturer2WS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer2WS/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Manufacturer2/Manufacturer2WS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Manufacturer2/Manufacturer2WS?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer2WS/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Manufacturer2/Manufacturer2WS.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/Manufacturer2WS"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
@@ -77,8 +77,8 @@
     </target>
     <target name="wsimport-client-Manufacturer3WS" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/Manufacturer3WS"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Manufacturer3WS" destdir="${build.generated.dir}/jax-wsCache/Manufacturer3WS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer3WS/wsdl/localhost_8080/Manufacturer3/Manufacturer3WS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Manufacturer3/Manufacturer3WS?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer3WS/wsdl/localhost_8080/Manufacturer3/Manufacturer3WS.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Manufacturer3WS" destdir="${build.generated.dir}/jax-wsCache/Manufacturer3WS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer3WS/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Manufacturer3/Manufacturer3WS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Manufacturer3/Manufacturer3WS?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer3WS/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Manufacturer3/Manufacturer3WS.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/Manufacturer3WS"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">

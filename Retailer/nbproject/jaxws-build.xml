@@ -45,8 +45,8 @@
     </target>
     <target name="wsimport-client-WarehouseWS" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WarehouseWS"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WarehouseWS" destdir="${build.generated.dir}/jax-wsCache/WarehouseWS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/WarehouseWS/wsdl/localhost_8080/Warehouse1/WarehouseWS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Warehouse1/WarehouseWS?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/WarehouseWS/wsdl/localhost_8080/Warehouse1/WarehouseWS.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WarehouseWS" destdir="${build.generated.dir}/jax-wsCache/WarehouseWS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/WarehouseWS/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Warehouse1/WarehouseWS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Warehouse1/WarehouseWS?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/WarehouseWS/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Warehouse1/WarehouseWS.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WarehouseWS"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
@@ -61,8 +61,8 @@
     </target>
     <target name="wsimport-client-Warehouse2WS" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/Warehouse2WS"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Warehouse2WS" destdir="${build.generated.dir}/jax-wsCache/Warehouse2WS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Warehouse2WS/wsdl/localhost_8080/Warehouse2/Warehouse2WS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Warehouse2/Warehouse2WS?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Warehouse2WS/wsdl/localhost_8080/Warehouse2/Warehouse2WS.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Warehouse2WS" destdir="${build.generated.dir}/jax-wsCache/Warehouse2WS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Warehouse2WS/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Warehouse2/Warehouse2WS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Warehouse2/Warehouse2WS?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Warehouse2WS/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Warehouse2/Warehouse2WS.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/Warehouse2WS"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
@@ -77,8 +77,8 @@
     </target>
     <target name="wsimport-client-Warehouse3WS" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/Warehouse3WS"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Warehouse3WS" destdir="${build.generated.dir}/jax-wsCache/Warehouse3WS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Warehouse3WS/wsdl/localhost_8080/Warehouse3/Warehouse3WS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Warehouse3/Warehouse3WS?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Warehouse3WS/wsdl/localhost_8080/Warehouse3/Warehouse3WS.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Warehouse3WS" destdir="${build.generated.dir}/jax-wsCache/Warehouse3WS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Warehouse3WS/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Warehouse3/Warehouse3WS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Warehouse3/Warehouse3WS?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Warehouse3WS/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Warehouse3/Warehouse3WS.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/Warehouse3WS"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">

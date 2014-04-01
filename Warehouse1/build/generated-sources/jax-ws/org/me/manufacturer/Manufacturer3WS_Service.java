@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "Manufacturer3WS", targetNamespace = "http://manufacturer.me.org/", wsdlLocation = "http://localhost:8080/Manufacturer3/Manufacturer3WS?wsdl")
+@WebServiceClient(name = "Manufacturer3WS", targetNamespace = "http://manufacturer.me.org/", wsdlLocation = "http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Manufacturer3/Manufacturer3WS?wsdl")
 public class Manufacturer3WS_Service
     extends Service
 {
@@ -30,7 +30,7 @@ public class Manufacturer3WS_Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://localhost:8080/Manufacturer3/Manufacturer3WS?wsdl");
+            url = new URL("http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Manufacturer3/Manufacturer3WS?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

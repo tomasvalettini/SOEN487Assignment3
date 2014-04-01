@@ -15,18 +15,18 @@ import org.me.warehouse.Warehouse3WS_Service;
 @WebService(serviceName = "RetailerWS")
 public class RetailerWS
 {
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Warehouse3/Warehouse3WS.wsdl")
-    private Warehouse3WS_Service service_2;
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Warehouse2/Warehouse2WS.wsdl")
-    private Warehouse2WS_Service service_1;
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Warehouse1/WarehouseWS.wsdl")
-    private WarehouseWS_Service service;
-//    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Warehouse3/Warehouse3WS.wsdl")
+//    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Warehouse3/Warehouse3WS.wsdl")
 //    private Warehouse3WS_Service service_2;
-//    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Warehouse2/Warehouse2WS.wsdl")
+//    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Warehouse2/Warehouse2WS.wsdl")
 //    private Warehouse2WS_Service service_1;
-//    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Warehouse1/WarehouseWS.wsdl")
+//    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Warehouse1/WarehouseWS.wsdl")
 //    private WarehouseWS_Service service;
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Warehouse3/Warehouse3WS.wsdl")
+    private Warehouse3WS_Service service_2;
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Warehouse2/Warehouse2WS.wsdl")
+    private Warehouse2WS_Service service_1;
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Warehouse1/WarehouseWS.wsdl")
+    private WarehouseWS_Service service;
     
     @WebMethod(operationName = "getCatalog")
     public ProductList getCatalog()
@@ -99,95 +99,114 @@ public class RetailerWS
         Warehouse2WS port2 = service_1.getWarehouse2WSPort();
         Warehouse3WS port3 = service_2.getWarehouse3WSPort();
         
-        ShippedList sl = port.shipGoods(items);
+        OrderList completeOrder = items;
+        ShippedList temp, sl;
+        temp = port.shipGoods(items);
         
-        for (int i = 0; i < items.getItems().size(); i++)
+        System.out.println("Process shipped one!");
+        for (int i = 0; i < completeOrder.getItems().size(); i++)
         {
-            System.out.println("Shipped goods quantity (" + sl.getItems().get(i).getProduct().getProductName() + "): " + sl.getItems().get(i).getQuantity());
-            System.out.println("items to ship quantity: (" + items.getItems().get(i).getProduct().getProductName() + ")" + items.getItems().get(i).getQuantity());
-            if (sl.getItems().get(i).getQuantity() == items.getItems().get(i).getQuantity())
+            for (int j = 0; j < temp.getItems().size(); j++)
             {
-                items.getItems().remove(i);
-            }
-            else
-            {
-                //items shipped will always be less than the ordered ones!!
-                items.getItems().get(i).setQuantity(items.getItems().get(i).getQuantity() - sl.getItems().get(i).getQuantity());
-            }
-        }
-        
-        if (items.getItems().isEmpty())
-        {
-            return sl;
-        }
-        else
-        {
-            ShippedList sl2 = port2.shipGoods(items);
-        
-            for (int i = 0; i < items.getItems().size(); i++)
-            {
-                if (sl2.getItems().get(i).getQuantity() == items.getItems().get(i).getQuantity())
+                if (completeOrder.getItems().get(i).getProduct().getManufacturerName().equals(temp.getItems().get(j).getProduct().getManufacturerName()) &&
+                    completeOrder.getItems().get(i).getProduct().getProductName().equals(temp.getItems().get(j).getProduct().getProductName()) &&
+                    completeOrder.getItems().get(i).getProduct().getProductType().equals(temp.getItems().get(j).getProduct().getProductType()) &&
+                    completeOrder.getItems().get(i).getProduct().getUnitPrice() == temp.getItems().get(j).getProduct().getUnitPrice())
                 {
-                    items.getItems().remove(i);
-                }
-                else
-                {
-                    //items shipped will always be less than the ordered ones!!
-                    items.getItems().get(i).setQuantity(items.getItems().get(i).getQuantity() - sl2.getItems().get(i).getQuantity());
-                }
-                
-                //adding the quantity to the item that were left from the previous warehouse
-                //double for loop to do this :(
-                for (int j = 0; j < sl.getItems().size(); j++)
-                {
-                    for (int k = 0; k < sl2.getItems().size(); k++)
+                    if (completeOrder.getItems().get(i).getQuantity() == temp.getItems().get(j).getQuantity())
                     {
-                        if (sl.getItems().get(i).getProduct().getManufacturerName().equals(sl2.getItems().get(k).getProduct().getManufacturerName()) &&
-                            sl.getItems().get(i).getProduct().getProductName().equals(sl2.getItems().get(k).getProduct().getProductName()) &&
-                            sl.getItems().get(i).getProduct().getProductType().equals(sl2.getItems().get(k).getProduct().getProductType()) &&
-                            sl.getItems().get(i).getProduct().getUnitPrice() == sl2.getItems().get(k).getProduct().getUnitPrice())
-                        {
-                            sl.getItems().get(i).setQuantity(sl.getItems().get(i).getQuantity() + sl2.getItems().get(k).getQuantity());
-                        }
-                    }
-                }
-            }
-            
-            if (items.getItems().isEmpty())
-            {
-                return sl;
-            }
-            else
-            {
-                ShippedList sl3 = port3.shipGoods(items);
-        
-                for (int i = 0; i < items.getItems().size(); i++)
-                {
-                    if (sl3.getItems().get(i).getQuantity() == items.getItems().get(i).getQuantity())
-                    {
-                        items.getItems().remove(i);
+                        completeOrder.getItems().remove(i);
                     }
                     else
                     {
-                        //items shipped will always be less than the ordered ones!!
-                        items.getItems().get(i).setQuantity(items.getItems().get(i).getQuantity() - sl3.getItems().get(i).getQuantity());
+                        completeOrder.getItems().get(i).setQuantity(completeOrder.getItems().get(i).getQuantity() - temp.getItems().get(j).getQuantity());
                     }
-
-                    //adding the quantity to the item that were left from the previous warehouse
-                    //double for loop to do this :(
-                    for (int j = 0; j < sl.getItems().size(); j++)
+                }
+            }
+        }
+        
+        sl = temp;
+        
+        if (completeOrder.getItems().isEmpty())
+        {
+            return sl;
+        }
+        
+        temp = port2.shipGoods(completeOrder);
+        
+        for (int i = 0; i < completeOrder.getItems().size(); i++)
+        {
+            for (int j = 0; j < temp.getItems().size(); j++)
+            {
+                if (completeOrder.getItems().get(i).getProduct().getManufacturerName().equals(temp.getItems().get(j).getProduct().getManufacturerName()) &&
+                    completeOrder.getItems().get(i).getProduct().getProductName().equals(temp.getItems().get(j).getProduct().getProductName()) &&
+                    completeOrder.getItems().get(i).getProduct().getProductType().equals(temp.getItems().get(j).getProduct().getProductType()) &&
+                    completeOrder.getItems().get(i).getProduct().getUnitPrice() == temp.getItems().get(j).getProduct().getUnitPrice())
+                {
+                    if (completeOrder.getItems().get(i).getQuantity() == temp.getItems().get(j).getQuantity())
                     {
-                        for (int k = 0; k < sl3.getItems().size(); k++)
-                        {
-                            if (sl.getItems().get(i).getProduct().getManufacturerName().equals(sl3.getItems().get(k).getProduct().getManufacturerName()) &&
-                                sl.getItems().get(i).getProduct().getProductName().equals(sl3.getItems().get(k).getProduct().getProductName()) &&
-                                sl.getItems().get(i).getProduct().getProductType().equals(sl3.getItems().get(k).getProduct().getProductType()) &&
-                                sl.getItems().get(i).getProduct().getUnitPrice() == sl3.getItems().get(k).getProduct().getUnitPrice())
-                            {
-                                sl.getItems().get(i).setQuantity(sl.getItems().get(i).getQuantity() + sl3.getItems().get(k).getQuantity());
-                            }
-                        }
+                        completeOrder.getItems().remove(i);
                     }
+                    else
+                    {
+                        completeOrder.getItems().get(i).setQuantity(completeOrder.getItems().get(i).getQuantity() - temp.getItems().get(j).getQuantity());
+                    }
+                }
+            }
+        }
+        
+        for (int i = 0; i < sl.getItems().size(); i++)
+        {
+            for (int j = 0; j < temp.getItems().size(); j++)
+            {
+                if (sl.getItems().get(i).getProduct().getManufacturerName().equals(temp.getItems().get(j).getProduct().getManufacturerName()) &&
+                    sl.getItems().get(i).getProduct().getProductName().equals(temp.getItems().get(j).getProduct().getProductName()) &&
+                    sl.getItems().get(i).getProduct().getProductType().equals(temp.getItems().get(j).getProduct().getProductType()) &&
+                    sl.getItems().get(i).getProduct().getUnitPrice() == temp.getItems().get(j).getProduct().getUnitPrice())
+                {
+                    sl.getItems().get(i).setQuantity(sl.getItems().get(i).getQuantity() + temp.getItems().get(j).getQuantity());
+                }
+            }
+        }
+        
+        if (completeOrder.getItems().isEmpty())
+        {
+            return sl;
+        }
+        
+        temp = port3.shipGoods(completeOrder);
+        
+        for (int i = 0; i < completeOrder.getItems().size(); i++)
+        {
+            for (int j = 0; j < temp.getItems().size(); j++)
+            {
+                if (completeOrder.getItems().get(i).getProduct().getManufacturerName().equals(temp.getItems().get(j).getProduct().getManufacturerName()) &&
+                    completeOrder.getItems().get(i).getProduct().getProductName().equals(temp.getItems().get(j).getProduct().getProductName()) &&
+                    completeOrder.getItems().get(i).getProduct().getProductType().equals(temp.getItems().get(j).getProduct().getProductType()) &&
+                    completeOrder.getItems().get(i).getProduct().getUnitPrice() == temp.getItems().get(j).getProduct().getUnitPrice())
+                {
+                    if (completeOrder.getItems().get(i).getQuantity() == temp.getItems().get(j).getQuantity())
+                    {
+                        completeOrder.getItems().remove(i);
+                    }
+                    else
+                    {
+                        completeOrder.getItems().get(i).setQuantity(completeOrder.getItems().get(i).getQuantity() - temp.getItems().get(j).getQuantity());
+                    }
+                }
+            }
+        }
+        
+        for (int i = 0; i < sl.getItems().size(); i++)
+        {
+            for (int j = 0; j < temp.getItems().size(); j++)
+            {
+                if (sl.getItems().get(i).getProduct().getManufacturerName().equals(temp.getItems().get(j).getProduct().getManufacturerName()) &&
+                    sl.getItems().get(i).getProduct().getProductName().equals(temp.getItems().get(j).getProduct().getProductName()) &&
+                    sl.getItems().get(i).getProduct().getProductType().equals(temp.getItems().get(j).getProduct().getProductType()) &&
+                    sl.getItems().get(i).getProduct().getUnitPrice() == temp.getItems().get(j).getProduct().getUnitPrice())
+                {
+                    sl.getItems().get(i).setQuantity(sl.getItems().get(i).getQuantity() + temp.getItems().get(j).getQuantity());
                 }
             }
         }

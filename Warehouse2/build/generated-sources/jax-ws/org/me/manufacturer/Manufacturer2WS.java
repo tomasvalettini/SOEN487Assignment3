@@ -26,21 +26,6 @@ public interface Manufacturer2WS {
 
     /**
      * 
-     * @param purchaseOrder
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "processPurchasePrder", targetNamespace = "http://manufacturer.me.org/", className = "org.me.manufacturer.ProcessPurchasePrder")
-    @ResponseWrapper(localName = "processPurchasePrderResponse", targetNamespace = "http://manufacturer.me.org/", className = "org.me.manufacturer.ProcessPurchasePrderResponse")
-    @Action(input = "http://manufacturer.me.org/Manufacturer2WS/processPurchasePrderRequest", output = "http://manufacturer.me.org/Manufacturer2WS/processPurchasePrderResponse")
-    public boolean processPurchasePrder(
-        @WebParam(name = "purchaseOrder", targetNamespace = "")
-        PurchaseOrder purchaseOrder);
-
-    /**
-     * 
      * @param orderNumber
      * @param totalPrice
      * @return
@@ -56,6 +41,21 @@ public interface Manufacturer2WS {
         int orderNumber,
         @WebParam(name = "totalPrice", targetNamespace = "")
         float totalPrice);
+
+    /**
+     * 
+     * @param purchaseOrder
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "processPurchasePrder", targetNamespace = "http://manufacturer.me.org/", className = "org.me.manufacturer.ProcessPurchasePrder")
+    @ResponseWrapper(localName = "processPurchasePrderResponse", targetNamespace = "http://manufacturer.me.org/", className = "org.me.manufacturer.ProcessPurchasePrderResponse")
+    @Action(input = "http://manufacturer.me.org/Manufacturer2WS/processPurchasePrderRequest", output = "http://manufacturer.me.org/Manufacturer2WS/processPurchasePrderResponse")
+    public boolean processPurchasePrder(
+        @WebParam(name = "purchaseOrder", targetNamespace = "")
+        PurchaseOrder purchaseOrder);
 
     /**
      * 

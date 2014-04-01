@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><inventory>
+<?xml version="1.0" encoding="UTF-8"?>
+<inventory>
     <item name="Brand1TV">
        <manufacturerName>Brand1</manufacturerName>
        <productType>TV</productType>
@@ -15,7 +16,7 @@
        <manufacturerName>Brand1</manufacturerName>
        <productType>DVD</productType>
        <unitPrice>10</unitPrice>
-       <quantity>88</quantity>
+       <quantity>89</quantity>
     </item>
     <item name="Brand2TV">
        <manufacturerName>Brand2</manufacturerName>
@@ -27,7 +28,7 @@
        <manufacturerName>Brand2</manufacturerName>
        <productType>CAM</productType>
        <unitPrice>250</unitPrice>
-       <quantity>314</quantity>
+       <quantity>315</quantity>
     </item>
     <item name="Brand2DVD">
        <manufacturerName>Brand2</manufacturerName>
@@ -39,7 +40,7 @@
        <manufacturerName>Brand3</manufacturerName>
        <productType>TV</productType>
        <unitPrice>3500</unitPrice>
-       <quantity>126</quantity>
+       <quantity>127</quantity>
     </item>
     <item name="Brand3CAM">
        <manufacturerName>Brand3</manufacturerName>
@@ -51,6 +52,6 @@
        <manufacturerName>Brand3</manufacturerName>
        <productType>DVD</productType>
        <unitPrice>15</unitPrice>
-       <quantity>74</quantity>
+       <quantity>75</quantity>
     </item>
 </inventory>
