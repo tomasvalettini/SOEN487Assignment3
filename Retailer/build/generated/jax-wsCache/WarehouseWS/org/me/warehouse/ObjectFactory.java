@@ -24,7 +24,9 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _GetProducts_QNAME = new QName("http://warehouse.me.org/", "getProducts");
     private final static QName _ShipGoodsResponse_QNAME = new QName("http://warehouse.me.org/", "shipGoodsResponse");
+    private final static QName _GetProductsResponse_QNAME = new QName("http://warehouse.me.org/", "getProductsResponse");
     private final static QName _ShipGoods_QNAME = new QName("http://warehouse.me.org/", "shipGoods");
 
     /**
@@ -32,6 +34,22 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link GetProductsResponse }
+     * 
+     */
+    public GetProductsResponse createGetProductsResponse() {
+        return new GetProductsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetProducts }
+     * 
+     */
+    public GetProducts createGetProducts() {
+        return new GetProducts();
     }
 
     /**
@@ -51,11 +69,44 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ProductList }
+     * 
+     */
+    public ProductList createProductList() {
+        return new ProductList();
+    }
+
+    /**
+     * Create an instance of {@link ShippedList }
+     * 
+     */
+    public ShippedList createShippedList() {
+        return new ShippedList();
+    }
+
+    /**
      * Create an instance of {@link OrderItem }
      * 
      */
     public OrderItem createOrderItem() {
         return new OrderItem();
+    }
+
+    /**
+     * Create an instance of {@link OrderList }
+     * 
+     */
+    public OrderList createOrderList() {
+        return new OrderList();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetProducts }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://warehouse.me.org/", name = "getProducts")
+    public JAXBElement<GetProducts> createGetProducts(GetProducts value) {
+        return new JAXBElement<GetProducts>(_GetProducts_QNAME, GetProducts.class, null, value);
     }
 
     /**
@@ -65,6 +116,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://warehouse.me.org/", name = "shipGoodsResponse")
     public JAXBElement<ShipGoodsResponse> createShipGoodsResponse(ShipGoodsResponse value) {
         return new JAXBElement<ShipGoodsResponse>(_ShipGoodsResponse_QNAME, ShipGoodsResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetProductsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://warehouse.me.org/", name = "getProductsResponse")
+    public JAXBElement<GetProductsResponse> createGetProductsResponse(GetProductsResponse value) {
+        return new JAXBElement<GetProductsResponse>(_GetProductsResponse_QNAME, GetProductsResponse.class, null, value);
     }
 
     /**

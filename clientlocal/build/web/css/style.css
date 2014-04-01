@@ -1,0 +1,19 @@
+.itemContainer
+{
+    background-color: #20a0ff;
+    width: 180px;
+    height: 200px;
+}
+
+.itemContainer h2, .itemContainer h3, .itemContainer h4, .itemContainer h5
+{
+    text-align: center;
+}
+
+.section
+{
+    width: 550px;
+    height: 610px;
+    margin: auto;
+    text-align: center;
+}

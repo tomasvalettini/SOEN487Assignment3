@@ -26,27 +26,21 @@ public interface ManufacturerWS {
 
     /**
      * 
-<<<<<<< HEAD
-<<<<<<< HEAD
-     * @param productType
+     * @param purchaseOrder
      * @return
-     *     returns org.me.manufacturer.Product
+     *     returns boolean
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getProductInfo", targetNamespace = "http://manufacturer.me.org/", className = "org.me.manufacturer.GetProductInfo")
-    @ResponseWrapper(localName = "getProductInfoResponse", targetNamespace = "http://manufacturer.me.org/", className = "org.me.manufacturer.GetProductInfoResponse")
-    @Action(input = "http://manufacturer.me.org/ManufacturerWS/getProductInfoRequest", output = "http://manufacturer.me.org/ManufacturerWS/getProductInfoResponse")
-    public Product getProductInfo(
-        @WebParam(name = "productType", targetNamespace = "")
-        String productType);
+    @RequestWrapper(localName = "processPurchasePrder", targetNamespace = "http://manufacturer.me.org/", className = "org.me.manufacturer.ProcessPurchasePrder")
+    @ResponseWrapper(localName = "processPurchasePrderResponse", targetNamespace = "http://manufacturer.me.org/", className = "org.me.manufacturer.ProcessPurchasePrderResponse")
+    @Action(input = "http://manufacturer.me.org/ManufacturerWS/processPurchasePrderRequest", output = "http://manufacturer.me.org/ManufacturerWS/processPurchasePrderResponse")
+    public boolean processPurchasePrder(
+        @WebParam(name = "purchaseOrder", targetNamespace = "")
+        PurchaseOrder purchaseOrder);
 
     /**
      * 
-=======
->>>>>>> da5b1c0ff27b6e848e7a0a28497b967e30010819
-=======
->>>>>>> da5b1c0ff27b6e848e7a0a28497b967e30010819
      * @param orderNumber
      * @param totalPrice
      * @return
@@ -65,11 +59,6 @@ public interface ManufacturerWS {
 
     /**
      * 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> da5b1c0ff27b6e848e7a0a28497b967e30010819
      * @param productType
      * @return
      *     returns org.me.manufacturer.Product
@@ -82,24 +71,5 @@ public interface ManufacturerWS {
     public Product getProductInfo(
         @WebParam(name = "productType", targetNamespace = "")
         String productType);
-
-    /**
-     * 
-<<<<<<< HEAD
->>>>>>> da5b1c0ff27b6e848e7a0a28497b967e30010819
-=======
->>>>>>> da5b1c0ff27b6e848e7a0a28497b967e30010819
-     * @param purchaseOrder
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "processPurchasePrder", targetNamespace = "http://manufacturer.me.org/", className = "org.me.manufacturer.ProcessPurchasePrder")
-    @ResponseWrapper(localName = "processPurchasePrderResponse", targetNamespace = "http://manufacturer.me.org/", className = "org.me.manufacturer.ProcessPurchasePrderResponse")
-    @Action(input = "http://manufacturer.me.org/ManufacturerWS/processPurchasePrderRequest", output = "http://manufacturer.me.org/ManufacturerWS/processPurchasePrderResponse")
-    public boolean processPurchasePrder(
-        @WebParam(name = "purchaseOrder", targetNamespace = "")
-        PurchaseOrder purchaseOrder);
 
 }

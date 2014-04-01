@@ -7,6 +7,12 @@
 <xsd:import namespace="http://manufacturer.me.org/" schemaLocation="http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Warehouse1/WarehouseWS?xsd=2"/>
 </xsd:schema>
 </types>
+<message name="getProducts">
+<part name="parameters" element="tns:getProducts"/>
+</message>
+<message name="getProductsResponse">
+<part name="parameters" element="tns:getProductsResponse"/>
+</message>
 <message name="shipGoods">
 <part name="parameters" element="tns:shipGoods"/>
 </message>
@@ -14,6 +20,10 @@
 <part name="parameters" element="tns:shipGoodsResponse"/>
 </message>
 <portType name="WarehouseWS">
+<operation name="getProducts">
+<input wsam:Action="http://warehouse.me.org/WarehouseWS/getProductsRequest" message="tns:getProducts"/>
+<output wsam:Action="http://warehouse.me.org/WarehouseWS/getProductsResponse" message="tns:getProductsResponse"/>
+</operation>
 <operation name="shipGoods">
 <input wsam:Action="http://warehouse.me.org/WarehouseWS/shipGoodsRequest" message="tns:shipGoods"/>
 <output wsam:Action="http://warehouse.me.org/WarehouseWS/shipGoodsResponse" message="tns:shipGoodsResponse"/>
@@ -21,6 +31,15 @@
 </portType>
 <binding name="WarehouseWSPortBinding" type="tns:WarehouseWS">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="getProducts">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="shipGoods">
 <soap:operation soapAction=""/>
 <input>

@@ -2,4 +2,14 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:8080/Manufacturer/ManufacturerWS?wsdl" uri="wsdl/localhost_8080/Manufacturer/ManufacturerWS.wsdl"/>
     <system systemId="http://localhost:8080/Manufacturer/ManufacturerWS?xsd=1" uri="wsdl/localhost_8080/Manufacturer/ManufacturerWS.xsd_1.xsd"/>
+    <system systemId="http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Manufacturer/ManufacturerWS?wsdl" uri="wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Manufacturer/ManufacturerWS.wsdl"/>
+    <system systemId="http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Manufacturer/ManufacturerWS?xsd=1" uri="wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Manufacturer/ManufacturerWS.xsd_1.xsd"/>
+    <system systemId="http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Manufacturer2/Manufacturer2WS?wsdl" uri="wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Manufacturer2/Manufacturer2WS.wsdl"/>
+    <system systemId="http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Manufacturer2/Manufacturer2WS?xsd=1" uri="wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Manufacturer2/Manufacturer2WS.xsd_1.xsd"/>
+    <system systemId="http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Manufacturer3/Manufacturer3WS?wsdl" uri="wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Manufacturer3/Manufacturer3WS.wsdl"/>
+    <system systemId="http://ec2-54-186-163-110.us-west-2.compute.amazonaws.com:8080/Manufacturer3/Manufacturer3WS?xsd=1" uri="wsdl/ec2-54-186-163-110.us-west-2.compute.amazonaws.com_8080/Manufacturer3/Manufacturer3WS.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/Manufacturer2/Manufacturer2WS?wsdl" uri="wsdl/localhost_8080/Manufacturer2/Manufacturer2WS.wsdl"/>
+    <system systemId="http://localhost:8080/Manufacturer2/Manufacturer2WS?xsd=1" uri="wsdl/localhost_8080/Manufacturer2/Manufacturer2WS.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/Manufacturer3/Manufacturer3WS?wsdl" uri="wsdl/localhost_8080/Manufacturer3/Manufacturer3WS.wsdl"/>
+    <system systemId="http://localhost:8080/Manufacturer3/Manufacturer3WS?xsd=1" uri="wsdl/localhost_8080/Manufacturer3/Manufacturer3WS.xsd_1.xsd"/>
 </catalog>

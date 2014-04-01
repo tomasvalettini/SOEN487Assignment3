@@ -6,7 +6,6 @@
 
 package org.me.warehouse;
 
-import java.util.List;
 import org.me.manufacturer.Product;
 import org.me.manufacturer.PurchaseOrder;
 
@@ -16,20 +15,27 @@ import org.me.manufacturer.PurchaseOrder;
  */
 class ManufacturerThree extends AbstractManufacturer
 {
-
     @Override
-    public Product getProductInfo(String productType) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Product getProductInfo(String productType)
+    {
+        org.me.manufacturer.Manufacturer3WS_Service service = new org.me.manufacturer.Manufacturer3WS_Service();
+        org.me.manufacturer.Manufacturer3WS port = service.getManufacturer3WSPort();
+        return port.getProductInfo(productType);
     }
 
     @Override
-    public boolean processPurchasePrder(PurchaseOrder purchaseOrder) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean processPurchasePrder(PurchaseOrder purchaseOrder)
+    {
+        org.me.manufacturer.Manufacturer3WS_Service service = new org.me.manufacturer.Manufacturer3WS_Service();
+        org.me.manufacturer.Manufacturer3WS port = service.getManufacturer3WSPort();
+        return port.processPurchasePrder(purchaseOrder);
     }
 
     @Override
-    public boolean receivePayment(int orderNumber, float totalPrice) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean receivePayment(int orderNumber, float totalPrice)
+    {
+        org.me.manufacturer.Manufacturer3WS_Service service = new org.me.manufacturer.Manufacturer3WS_Service();
+        org.me.manufacturer.Manufacturer3WS port = service.getManufacturer3WSPort();
+        return port.receivePayment(orderNumber, totalPrice);
     }
-    
 }

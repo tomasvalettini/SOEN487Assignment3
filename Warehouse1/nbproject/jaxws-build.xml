@@ -59,5 +59,37 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/org/me/manufacturer"/>
         <delete dir="${build.generated.dir}/jax-wsCache/ManufacturerWS"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-ManufacturerWS"/>
+    <target name="wsimport-client-Manufacturer2WS" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Manufacturer2WS"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Manufacturer2WS" destdir="${build.generated.dir}/jax-wsCache/Manufacturer2WS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer2WS/wsdl/localhost_8080/Manufacturer2/Manufacturer2WS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Manufacturer2/Manufacturer2WS?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer2WS/wsdl/localhost_8080/Manufacturer2/Manufacturer2WS.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Manufacturer2WS"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Manufacturer2WS">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Manufacturer2WS" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/me/manufacturer"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Manufacturer2WS"/>
+    </target>
+    <target name="wsimport-client-Manufacturer3WS" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Manufacturer3WS"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Manufacturer3WS" destdir="${build.generated.dir}/jax-wsCache/Manufacturer3WS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer3WS/wsdl/localhost_8080/Manufacturer3/Manufacturer3WS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Manufacturer3/Manufacturer3WS?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer3WS/wsdl/localhost_8080/Manufacturer3/Manufacturer3WS.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Manufacturer3WS"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Manufacturer3WS">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Manufacturer3WS" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/me/manufacturer"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Manufacturer3WS"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-ManufacturerWS, wsimport-client-Manufacturer2WS, wsimport-client-Manufacturer3WS"/>
 </project>

@@ -1,7 +1,6 @@
 
 package org.me.warehouse;
 
-import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -30,15 +29,27 @@ public interface WarehouseWS {
      * 
      * @param items
      * @return
-     *     returns java.util.List<org.me.warehouse.OrderItem>
+     *     returns org.me.warehouse.ShippedList
      */
     @WebMethod
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "shipGoods", targetNamespace = "http://warehouse.me.org/", className = "org.me.warehouse.ShipGoods")
     @ResponseWrapper(localName = "shipGoodsResponse", targetNamespace = "http://warehouse.me.org/", className = "org.me.warehouse.ShipGoodsResponse")
     @Action(input = "http://warehouse.me.org/WarehouseWS/shipGoodsRequest", output = "http://warehouse.me.org/WarehouseWS/shipGoodsResponse")
-    public List<OrderItem> shipGoods(
+    public ShippedList shipGoods(
         @WebParam(name = "items", targetNamespace = "")
-        List<OrderItem> items);
+        OrderList items);
+
+    /**
+     * 
+     * @return
+     *     returns org.me.warehouse.ProductList
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getProducts", targetNamespace = "http://warehouse.me.org/", className = "org.me.warehouse.GetProducts")
+    @ResponseWrapper(localName = "getProductsResponse", targetNamespace = "http://warehouse.me.org/", className = "org.me.warehouse.GetProductsResponse")
+    @Action(input = "http://warehouse.me.org/WarehouseWS/getProductsRequest", output = "http://warehouse.me.org/WarehouseWS/getProductsResponse")
+    public ProductList getProducts();
 
 }

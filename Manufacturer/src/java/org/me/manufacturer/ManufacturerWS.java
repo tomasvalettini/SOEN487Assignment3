@@ -55,7 +55,7 @@ public class ManufacturerWS
     public Product getProductInfo(@WebParam(name = "productType") String productType)
     {        
         Product prod = new Product();
-        
+        System.out.println("CALLED METHOD IN MANU");
         try
         { 
             DocumentBuilderFactory domfac = DocumentBuilderFactory.newInstance();
@@ -76,7 +76,7 @@ public class ManufacturerWS
                 if (product.getNodeType() == Node.ELEMENT_NODE) 
                 {
                     Element element = (Element) product;
-                    if(element.getAttribute("name").equals("productType"))
+                    if(element.getAttribute("name").equals(productType))
                     {
                         prod.setManufacturerName(getValue("manufacturerName", element));
                         prod.setProductType(getValue("productType", element));
